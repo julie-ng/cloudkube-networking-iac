@@ -43,3 +43,8 @@ variable "aks_subnet_address_prefixes" {
   type        = list(string)
   description = "Address space for subnet containing AKS nodes"
 }
+
+variable "aks_api_server_address_prefixes" {
+  type        = list(string)
+  description = "Address space for subnet for K8s API Server"
+}

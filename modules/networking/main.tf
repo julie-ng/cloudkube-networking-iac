@@ -28,11 +28,18 @@ resource "azurerm_virtual_network" "cluster_vnet" {
 # AKS Subnet
 # ----------
 
-resource "azurerm_subnet" "aks" {
+resource "azurerm_subnet" "aks_nodes" {
   name                 = "aks-nodes-subnet"
   resource_group_name  = azurerm_resource_group.networking_rg.name
   virtual_network_name = azurerm_virtual_network.cluster_vnet.name
   address_prefixes     = var.aks_subnet_address_prefixes
+}
+
+resource "azurerm_subnet" "aks_api_server" {
+  name                 = "aks-api-server-subnet"
+  resource_group_name  = azurerm_resource_group.networking_rg.name
+  virtual_network_name = azurerm_virtual_network.cluster_vnet.name
+  address_prefixes     = var.aks_api_server_address_prefixes
 }
 
 # Static IP for LB
