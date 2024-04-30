@@ -39,7 +39,7 @@ resource "azurerm_subnet" "aks" {
 # ----------------
 
 resource "azurerm_public_ip" "ingress" {
-  name                = "${local.name}-${var.env}-ingress-ip"
+  name                = "${local.name}-${var.env}-aks-ingress-ip"
   resource_group_name = azurerm_resource_group.networking_rg.name
   location            = azurerm_resource_group.networking_rg.location
   sku                 = "Standard"
