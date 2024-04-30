@@ -10,11 +10,17 @@ output "subnets" {
   value = module.network.subnets
 }
 
-output "cidrs" {
+output "ip_address_plan" {
   value = {
-    _0_vnet_address_space            = module.network.virtual_network.address_space[0]
-    _1_reserved_for_aks_service_cidr = var.reserved_for_aks_service_cidr
-    _2_aks_nodes_subnet              = module.network.subnets.aks_nodes.address_prefixes[0]
-    _3_aks_api_server_subnet         = module.network.subnets.aks_api_server.address_prefixes[0]
+    virtual_network = module.network.virtual_network.address_space[0]
+    subnets = {
+      aks_nodes_subnet      = module.network.subnets.aks_nodes.address_prefixes[0]
+      k8s_api_server_subnet = module.network.subnets.aks_api_server.address_prefixes[0]
+    }
+    reserved = {
+      k8s_service_address_range = var.reserved_k8s_service_address_range
+      k8s_dns_ip                = var.reserved_k8s_dns_ip
+      note                      = "Do not create subnets, resources in this range."
+    }
   }
 }

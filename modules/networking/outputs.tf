@@ -2,6 +2,7 @@ output "resource_group" {
   value = {
     name     = azurerm_resource_group.networking_rg.name
     location = azurerm_resource_group.networking_rg.location
+    tags     = azurerm_resource_group.networking_rg.tags
   }
 }
 

@@ -35,16 +35,21 @@ variable "default_tags" {
 # ------------------
 
 variable "vnet_address_space" {
-  type        = list(string)
-  description = "AKS Cluster Virtual Network Space"
+  type = list(string)
 }
 
-variable "aks_subnet_address_prefixes" {
-  type        = list(string)
-  description = "Address space for subnet containing AKS nodes"
+variable "aks_nodes_address_prefixes" {
+  type = list(string)
 }
 
 variable "aks_api_server_address_prefixes" {
-  type        = list(string)
-  description = "Address space for subnet for K8s API Server"
+  type = list(string)
+}
+
+variable "reserved_k8s_service_address_range" {
+  type = string
+}
+
+variable "reserved_k8s_dns_ip" {
+  type = string
 }
