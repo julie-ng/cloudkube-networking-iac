@@ -28,13 +28,14 @@ The following is defined in this repo
 
 | Name | Address | Notes |
 |:--|:--|:--|
-| Reserved for AKS Service | `10.0.0.0/22` | Cannot overlap with any subnet, otherwise [`ServiceCidrOverlapExistingSubnetsCidr`](https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/create-upgrade-delete/error-code-servicecidroverlapexistingsubnetscidr) error.|
+| Reserved for AKS Service | `10.0.0.0/22` | Do not use. |
 | Reserved for K8s DNS Service IP* | `10.0.0.2` | Must exist in reserved for AKS service range and _not_ be the first address. |
 
-## Usage
 
-> [!NOTE]
-> This repo (currently) uses local state file.
+> [!WARNING]
+> Do not use this space, which is reserved for Kubernetes services. If there is an overlap, Azure gives [`ServiceCidrOverlapExistingSubnetsCidr`](https://learn.microsoft.com/en-us/troubleshoot/azure/azure-kubernetes/create-upgrade-delete/error-code-servicecidroverlapexistingsubnetscidr) error.
+
+## Usage
 
 Initialize Terraform
 
@@ -53,3 +54,6 @@ If satisifed, apply changes
 ```bash
 terraform apply plan.tfplan
 ```
+
+> [!NOTE]
+> This repo (currently) uses local state file.
