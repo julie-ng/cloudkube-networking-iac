@@ -68,9 +68,3 @@ resource "azurerm_public_ip" "ingress" {
     prevent_destroy = true
   }
 }
-
-# ===============
-#  Client Config
-# ===============
-
-data "azurerm_client_config" "current" {}
